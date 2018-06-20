@@ -127,7 +127,7 @@ def main():
     loc_list = (get_loc_search(lat, lng, distance))
     finished = []
     print("writing to analysis.csv")
-    heading = ['ID', 'LATITUDE', 'LONGITUDE', 'AVG_LIKES']
+    heading = ['ID', 'LATITUDE', 'LONGITUDE', 'NAME', 'AVG_LIKES']
 
     with open("analysis.csv", 'a') as endfile:
         out_writer = csv.writer(endfile, delimiter = '|')
