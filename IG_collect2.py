@@ -4,7 +4,7 @@ import random
 import csv
 
 keys = []
-inFile = open("/home/colin/Desktop/GEO_IG/keys", "r")
+inFile = open("./keys", "r")
 for line in inFile:
     line = line.strip()
     keys.append(line)
@@ -123,8 +123,19 @@ def main():
     lat = 30.2672
     lng = -97.74131
     distance = 10
+    temp_list = (get_loc_search(lat, lng, distance))
+    loc_list = []
 
-    loc_list = (get_loc_search(lat, lng, distance))
+    #need to fix this loop to ignore duplicates
+    for x in range(0,10):
+
+        next_lat = temp_list[len(temp_list)-1][1]
+        next_lng = temp_list[len(temp_list)-1][2]
+        for loc in temp_list:
+            loc_list.append(loc)
+
+        temp_list = (get_loc_search(next_lat, next_lng, distance))
+   
     finished = []
     print("writing to analysis.csv")
     heading = ['ID', 'LATITUDE', 'LONGITUDE', 'NAME', 'AVG_LIKES']
